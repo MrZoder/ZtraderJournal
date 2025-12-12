@@ -1,0 +1,364 @@
+/* src/index.css */
+
+/* ------------------------------------------
+   Tailwind Base, Components, and Utilities
+   (Ensure these are included before custom rules)
+------------------------------------------- */
+@import "tailwindcss";
+
+
+/* ==========================================
+   1. SCROLLBAR UTILITIES
+   - consolidate “hide scrollbar” behavior 
+   - works in WebKit and Firefox/IE
+========================================== */
+
+/* Hide scrollbar for WebKit‐based browsers (Chrome, Safari, Edge) */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox, IE/Edge */
+.hide-scrollbar {
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE and Edge */
+}
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,255,163,0.4) transparent;
+    
+}
+
+
+
+
+/* ==========================================
+   2. DESIGN TOKENS (CSS VARIABLES)
+   - define only the colors or values you actually use
+========================================== */
+:root {
+  /* Auth Page Gradient Colors */
+  --bg-auth-from: #000000;
+  --bg-auth-via:  #131413;
+  --bg-auth-to:   #222422;
+  --bg:            #0B0F14;
+  --bg-elev:       rgba(255,255,255,.06);
+  --bg-elev-2:     rgba(255,255,255,.08);
+  --line:          rgba(255,255,255,.10);
+  --muted:         #a1a1aa;             /* zinc-400 */
+  --text:          #e5e7eb;             /* zinc-200 */
+  --title:         #fafafa;
+
+  --emerald:       #10b981;
+  --cyan:          #22d3ee;
+  --rose:          #f43f5e;
+  --amber:         #f59e0b;
+
+  --grad-1:        linear-gradient(135deg, rgba(16,185,129,.95), rgba(34,211,238,.95));
+  --grad-2:        linear-gradient(135deg, rgba(16,185,129,.18), rgba(34,211,238,.12));
+  --ring:          0 0 0 1px rgba(255,255,255,.08) inset;
+  --glow-emerald:  0 20px 60px -20px rgba(16,185,129,.35);
+  --glow-cyan:     0 20px 60px -20px rgba(34,211,238,.35);
+
+  --radius:        18px;
+  --radius-lg:     22px;
+  --blur:          10px;
+
+}
+html,body{background:var(--bg);}
+
+
+/* ==========================================
+   3. GLOBAL BACKGROUNDS & LAYOUT CLASSES
+========================================== */
+
+/* Auth page background gradient */
+.auth-bg {
+  background: linear-gradient(
+    to bottom right,
+    var(--bg-auth-from),
+    var(--bg-auth-via),
+    var(--bg-auth-to)
+  );
+}
+
+
+/* ==========================================
+   4. CARD & PANEL STYLING
+========================================== */
+
+/* Hover glow effect for card‐style elements */
+.glow-hover:hover {
+  box-shadow:
+    0 0 0px 1px rgba(255, 255, 255, 0.05),
+    0 0 4px rgba(255, 255, 255, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+
+/* Smooth transition on panel hover or state change */
+.card-panel {
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+
+/* ==========================================
+   5. JOURNAL & EDITOR SPECIFIC STYLES
+========================================== */
+
+/* “Checked” option glow in a select dropdown */
+select option:checked {
+  background-color: rgba(34, 197, 94, 0.3); /* subtle green highlight */
+}
+
+/* Editor toolbar button hover effect */
+.editor-toolbar button {
+  transition: background 0.2s ease;
+}
+.editor-toolbar button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Fade‐slide animation classes for journal content transitions */
+.fade-slide-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.fade-slide-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+
+/* ==========================================
+   6. CUSTOM SCROLLBAR FOR PANELS
+========================================== */
+
+/* Applies to any element with .slidepanel-scroll */
+.slidepanel-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.slidepanel-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+.slidepanel-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* ==========================================
+   7. PANEL SHADOW & TEXTURE
+========================================== */
+
+/* Deeper inner shadow for panel‐style containers */
+.shadow-inner-lg {
+  box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Ruled lines background for notebook‐style textarea */
+.notebook-text {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, transparent 8px, rgba(0, 0, 0, 0.03) 8px, transparent 9px);
+  background-size: 100% 32px, 32px 100%;
+}
+
+.tiptap-editor-bubble {
+  background: rgba(19,36,48,0.86);
+  border-radius: 2rem;
+  transition: box-shadow 0.24s, border 0.24s, background 0.24s;
+  box-shadow: 0 4px 24px 0 rgba(0,255,163,0.12), 0 1.5px 16px 0 rgba(0,40,80,0.34);
+  border: 1.5px solid rgba(0,255,163,0.09);
+  padding: 2.8rem 2rem 2.8rem 2rem;
+  min-height: 220px;
+  max-width: 740px;
+  margin: 0 auto;
+  position: relative;
+  overflow: visible;
+}
+.tiptap-editor-bubble:focus-within {
+  border-color: #00ffa3cc;
+  box-shadow: 0 0 0 3px #00ffa340, 0 6px 30px 0 rgba(0,255,163,0.12);
+}
+.tiptap-editor-bubble .ProseMirror {
+  background: transparent;
+  outline: none !important;
+  min-height: 160px;
+  font-size: 1.1rem;
+  color: #fff;
+  caret-color: #00ffa3;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+  padding: 0;
+}
+.tiptap-editor-bubble .ProseMirror:focus {
+  outline: none;
+}
+.tiptap-toolbar-glass {
+  background: rgba(22,48,62,0.80);
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,255,163,0.11);
+  border: 1.2px solid rgba(0,255,163,0.10);
+  margin: 0 auto 1rem auto;
+  display: flex;
+  gap: 0.5rem;
+  max-width: 680px;
+  position: relative;
+  top: 0;
+  padding: 0.3rem 0.8rem;
+  z-index: 20;
+}
+.tiptap-toolbar-glass button {
+  background: none;
+  border: none;
+  color: #93f2d5;
+  font-weight: 600;
+  font-size: 1.08rem;
+  border-radius: 0.75rem;
+  padding: 0.32rem 0.9rem;
+  transition: background 0.18s, color 0.18s;
+  cursor: pointer;
+  outline: none;
+}
+.tiptap-toolbar-glass button:hover,
+.tiptap-toolbar-glass button:focus {
+  background: rgba(0,255,163,0.10);
+  color: #00ffa3;
+}
+.tiptap-toolbar-glass .is-active {
+  background: rgba(0,255,163,0.17);
+  color: #00ffa3;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.97);}
+  100% { opacity: 1; transform: scale(1);}
+}
+.animate-fadeIn {
+  animation: fadeIn 0.38s ease;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 70% 0%, rgba(0,255,163,0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 15% 90%, rgba(14,235,195,0.09) 0%, transparent 48%),
+    linear-gradient(120deg, #101418 60%, #222d34 100%);
+  min-height: 100vh;
+  min-width: 100vw;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+}
+
+html, body {
+  overflow-x: hidden !important;
+}
+
+
+.tiptap li[data-type="taskItem"] {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  list-style: none;
+  padding-left: 0.25rem;
+}
+
+.tiptap li[data-type="taskItem"] > label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.tiptap li[data-type="taskItem"] input[type="checkbox"] {
+  appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid #4ade80;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: all 0.25s ease;
+  position: relative;
+  box-shadow: inset 0 0 0 1px #222;
+}
+
+.tiptap li[data-type="taskItem"] input[type="checkbox"]:hover {
+  box-shadow: 0 0 5px #4ade80cc;
+}
+
+.tiptap li[data-type="taskItem"] input[type="checkbox"]:checked {
+  background-color: #4ade80;
+  border-color: #4ade80;
+  box-shadow: 0 0 5px #4ade80aa;
+  transform: scale(1.1);
+}
+
+.tiptap li[data-type="taskItem"] input[type="checkbox"]::after {
+  content: "✔";
+  position: absolute;
+  font-size: 0.75rem;
+  color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s ease;
+}
+
+.tiptap li[data-type="taskItem"] input[type="checkbox"]:checked::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+/* Subtle spinner styling for Chrome */
+input[type="number"]::-webkit-inner-spin-button {
+  opacity: 0.3;
+  filter: invert(1); /* makes it lighter for dark themes */
+  margin-left: 2px;
+}
+/* Desktop custom scrollbar for scrollable panels */
+@media (min-width: 768px) {
+  .scroll-area::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .scroll-area::-webkit-scrollbar-track {
+    background: rgba(17, 24, 39, 0.6); /* slate-900ish */
+    border-radius: 9999px;
+  }
+  .scroll-area::-webkit-scrollbar-thumb {
+    background: rgba(45, 212, 191, 0.35); /* teal-ish */
+    border-radius: 9999px;
+    border: 2px solid rgba(17, 24, 39, 0.6);
+  }
+  .scroll-area::-webkit-scrollbar-thumb:hover {
+    background: rgba(45, 212, 191, 0.55);
+  }
+
+  /* Firefox */
+  .scroll-area {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(45,212,191,0.5) rgba(17,24,39,0.6);
+  }
+}
+
+html, body, #root {
+  background: #0F0F0F; /* same as your app background */
+  min-height: 100%;
+}
+
+/* Safe-area utilities for iOS PWAs (fallbacks included) */
+:root{
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+}
+
+.safe-pt{
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+.safe-pb{
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}

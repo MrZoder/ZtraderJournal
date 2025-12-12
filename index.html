@@ -1,0 +1,49 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- public/index.html -->
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<!-- Tint the browser UI to your app bg -->
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F0F0F">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#0F0F0F">
+
+
+    <!-- Page title -->
+    <title>ZTraderJournal</title>
+
+    <!-- 1) Fallback favicon (desktop browsers) -->
+    <link rel="icon" href="/ZtraderLogo.png" type="image/png" />
+
+    <!-- 2) Apple Touch Icon for iOS home‐screen -->
+    <!-- iOS will use this image (transparencies allowed) as the app icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/ZtraderLogo.png" />
+
+    <!-- 3) For some Android browsers (without manifest) -->
+    <link rel="shortcut icon" href="/ZtraderLogo.png" type="image/png" />
+
+    <!-- 4) Suggest standalone mode on iOS (optional but recommended) -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="ZTraderJournal" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- 5) Suggest standalone on Android/Chrome (optional) -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="ZTraderJournal" />
+
+    <!-- 6) Theme color for status bar (optional) -->
+    <meta name="theme-color" content="#000000" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
