@@ -7,8 +7,11 @@ ZTraderJournal is a production-grade trading analytics and journaling platform d
 This project demonstrates modern frontend engineering practices, strong UI/UX sensibility, and scalable analytics architecture using React.
 
 ---
+<img width="2527" height="1196" alt="Dashboard" src="https://github.com/user-attachments/assets/38b2546d-2408-4248-a48d-420270e4725b" />
+
 
 ## Overview
+<img width="1383" height="1146" alt="Screenshot 2025-12-12 180151" src="https://github.com/user-attachments/assets/fe144edb-c31f-4314-b158-c0f1f9a24596" />
 
 ZTraderJournal combines trade logging, performance analytics, and behavioral tracking into a single cohesive system.  
 Rather than focusing only on trade outcomes, the platform emphasizes process, discipline, and repeatable decision-making.
